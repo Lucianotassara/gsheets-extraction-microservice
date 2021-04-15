@@ -76,9 +76,8 @@ gSheetController.route('/').get(
 );
 
 
-// gSheetController.route('/fetchGSheetData').get((req, res) => {
-  gSheetController.get('/fetchGSheetData', function(req, res){
-  
+
+gSheetController.get('/fetchGSheetData', function(req, res){
   // Load client secrets from a local file.
   fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
@@ -100,32 +99,23 @@ gSheetController.route('/').get(
       const rows = newRes.data.values;
 
       if (rows.length) {
-          const keys = ['name', 'nickname', 'phone', 'role'];
+          const keys = ['name', 'nickname', 'phone', 'role', 'send'];
           const objects = rows.map(array => {
-          const object = {};
-          
-          keys.forEach((key, i) => object[key] = array[i]);
-          
-          return object;
+            const object = {};
+            keys.forEach((key, i) => object[key] = array[i]);
+            return object;
           });
+          
+          // Only filtering those with value "si" on spreadsheet E Column
+          const to = objects.filter(contact => contact.send === "si");
 
-          // TODO: return a json object array with all the information instead of printing on console.
-          // console.log(JSON.stringify(objects));
-          res.status(200).json(objects);  
+          res.status(200).json(to);  
       } else {
           console.log('No data found.');
       }
     });
   }
   
-  
-  
-  
-  
-  
-  
-  
-  // res.status(200).json({"message":'ok'});  
 });
 
   

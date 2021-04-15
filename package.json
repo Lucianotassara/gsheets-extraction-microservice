@@ -4,8 +4,8 @@
   "description": "Simple NodeJS Express microservice to extract information from a Google Spreadsheet to an API endpoint",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "nodemon index.js --inspect"
+    "start": "node -r esm index.js",
+    "test": "nodemon -r esm index.js --inspect"
   },
   "author": "Luciano Tassara",
   "license": "ISC",
