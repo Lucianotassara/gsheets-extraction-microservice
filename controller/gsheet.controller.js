@@ -77,6 +77,10 @@ gSheetController.route('/').get(
 
 
 gSheetController.get('/fetchGSheetData', function(req, res){
+
+  //check headers HERE to see if user is sending the secret
+  
+
   // Load client secrets from a local file.
   fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);
