@@ -14,7 +14,6 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // time.
 const TOKEN_PATH = 'token.json';
 
-
 const gSheetController = express.Router();
 
 /**
