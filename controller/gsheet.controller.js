@@ -76,7 +76,7 @@ gSheetController.route('/').get(
 
 
 
-gSheetController.get('/fetchGSheetData', function(req, res){
+gSheetController.get('/fetchPhonesEV', function(req, res){
 
   //check headers HERE to see if user is sending the secret
   
@@ -86,7 +86,7 @@ gSheetController.get('/fetchGSheetData', function(req, res){
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Sheets API.
     authorize(JSON.parse(content), listPhones);
-    
+
   });
 
   /**
