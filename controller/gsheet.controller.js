@@ -102,7 +102,7 @@ gSheetController.get('/fetchGSheetData', function(req, res){
       const rows = newRes.data.values;
 
       if (rows.length) {
-          const keys = ['name', 'nickname', 'phone', 'role', 'age', 'sex', 'send'];
+          const keys = ['name', 'nickname', 'phone', 'role', 'age', 'sex', 'send']; 
           const objects = rows.map(array => {
             const object = {};
             keys.forEach((key, i) => object[key] = array[i]);
