@@ -7,6 +7,9 @@ import helmet from 'helmet';
 
 import { gSheetController } from './controller' 
 
+const basicAuth = require('express-basic-auth')
+
+
 const app = express();
 
 app.use(cors());
@@ -14,7 +17,11 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-
+app.use(basicAuth({
+  users: { 'admin': process.env.SENDER_EMAIL_PSSWD },
+  challenge: true,
+  // realm: 'foo',
+}))
 // API
 app.use(gSheetController);
 
