@@ -70,7 +70,8 @@ function getNewToken(oAuth2Client, callback) {
 
 gSheetController.route('/').get(
   (req, res) => {
-    res.redirect('https://lucianotassara.com.ar')
+    // (req.params.code) ? '' : ''
+    res.redirect(`https://lucianotassara.com.ar/${params}`)
   }
 );
 
