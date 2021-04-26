@@ -6,6 +6,9 @@ const readline = require('readline');
 const {google} = require('googleapis');
 const { Console } = require('console');
 
+const CONFIG = require('../config.json');
+
+
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
@@ -97,8 +100,10 @@ gSheetController.get('/fetchPhonesEV', function(req, res){
   function listPhones(auth) {
     const sheets = google.sheets({version: 'v4', auth});
     sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GSHEET_SPREADSHEET_ID,
-      range: process.env.GSHEET_RANGE,
+      // spreadsheetId: process.env.GSHEET_SPREADSHEET_ID,
+      // range: process.env.GSHEET_RANGE,
+      spreadsheetId: CONFIG.GSHEET_SPREADSHEET_ID,
+      range: CONFIG.GSHEET_RANGE
     }, (err, newRes) => {
       if (err) return console.log('The API returned an error: ' + err);
       const rows = newRes.data.values;

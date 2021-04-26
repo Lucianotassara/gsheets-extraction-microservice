@@ -136,3 +136,4 @@ temp/
 # Google OAuth
 credentials.json
 token.json
+config.json
