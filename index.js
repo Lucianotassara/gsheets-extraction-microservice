@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import { gSheetController, pm2Controller } from './controller' 
+import { gSheetController, pm2Controller, viewController } from './controller' 
 
 const basicAuth = require('express-basic-auth')
 
@@ -18,13 +18,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
+app.set("view engine", "ejs");
+
+app.use("/", express.static(__dirname + "/views"));
+
 app.use(basicAuth({
   users: { 'admin': process.env.SENDER_EMAIL_PSSWD },
   challenge: true,
   // realm: 'foo',
 }))
 // API
-app.use(gSheetController, pm2Controller);
+app.use(gSheetController, pm2Controller, viewController);
 
 function notFound(req, res, next) {
   const error = new Error(`Not Found - ${req.originalUrl}`);
@@ -45,7 +49,7 @@ function errorHandler(err, req, res, next) {
 app.use(notFound);
 app.use(errorHandler);
 
-const  gSheetExtractorApi = process.env.GSHEET_API_PORT || 3006;
+const  gSheetExtractorApi = process.env.GSHEET_API_PORT || 3009;
 
 app.listen(gSheetExtractorApi, () => {
   console.log(`Started successfully server at port ${gSheetExtractorApi}`);
