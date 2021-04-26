@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import { gSheetController } from './controller' 
+import { gSheetController, pm2Controller } from './controller' 
 
 const basicAuth = require('express-basic-auth')
 
@@ -24,7 +24,7 @@ app.use(basicAuth({
   // realm: 'foo',
 }))
 // API
-app.use(gSheetController);
+app.use(gSheetController, pm2Controller);
 
 function notFound(req, res, next) {
   const error = new Error(`Not Found - ${req.originalUrl}`);
