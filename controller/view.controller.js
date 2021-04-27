@@ -4,7 +4,7 @@ let pm2 = require('pm2');
 const viewController = express.Router();
 const CONFIG = require('../config.json');
 
-viewController.route('/home').get(
+viewController.route('/bot').get(
     (req, res) => {
         let procList;
         pm2.connect(function (err) {
