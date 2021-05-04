@@ -166,11 +166,13 @@ gSheetController.get('/fetchPhonesEV', function(req, res){
         delete v._links; 
       });
 
-      // If no values, responding an error message
-      (to[0] === undefined) 
-        ? res.send({message: 'No data found'}) 
-        : res.send(to);
+      // // If no values, responding an error message
+      // (to[0] === undefined) 
+      //   ? res.send({message: 'No data found'}) 
+      //   : res.send(to);
       
+        res.send(to);
+
     }
     if(err){ 
       res.send(error)
