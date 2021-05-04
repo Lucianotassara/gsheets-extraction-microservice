@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-  <a class="navbar-brand" href="/">Links</a>
+  <a class="navbar-brand" href="/bot">Links</a>
+  
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
       <!-- <a class="nav-link" href="/">Inicio</a> -->
@@ -8,4 +9,8 @@
       <!-- <a class="nav-link" href="/about">Sobre mi</a> -->
     </li>
   </ul>
+
+  <span class="badge bg-success"><%=(data[0].pid) ? 'Bot ACTIVO' : '' %></span>
+  <span class="badge bg-danger"><%=(!data[0].pid) ? 'Bot APAGADO' : '' %></span>
+  
 </nav>

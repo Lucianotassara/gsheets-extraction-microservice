@@ -15,19 +15,16 @@ viewController.route('/bot').get(
 
             pm2.list((err, list) => {
                 console.log(err, list);
-                res.render("index", { links: list });
-                // res.status(200).json({
-                //     "pid": list[0].pid,
-                //     "name": list[0].name,
-                //     "status": list[0].pm2_env.status,
-                //     "pm_id": list[0].pm_id,
-                //     "memory": list[0].monit.memory,
-                //     "cpu": list[0].monit.cpu
-                // });
+
+                const proc = list.filter(ps => ps.name === CONFIG.PM2_PROC_NAME)
+
+                res.render("index", { data: proc });
+               
                 pm2.disconnect();
             })
 
         });
+
     }
          
 );

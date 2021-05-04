@@ -137,3 +137,4 @@ temp/
 credentials.json
 token.json
 config.json
+client_secret.json
