@@ -14,7 +14,7 @@ viewController.route('/bot').get(
             pm2.list((err, list) => {
                 console.log(err, list);
                 const proc = list.filter(ps => ps.name === CONFIG.PM2_PROC_NAME)
-                res.render("index", { data: proc });
+                res.render("index", { data: proc, spreadsheetId: CONFIG.GSHEET_SPREADSHEET_V2_ID });
                 pm2.disconnect();
             })
         });
