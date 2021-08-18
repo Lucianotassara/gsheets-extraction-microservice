@@ -135,5 +135,5 @@ temp/
 
 # Google OAuth
 credentials.json
-config.json
+config.json*
 client_secret.json
